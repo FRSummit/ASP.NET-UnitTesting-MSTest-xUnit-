@@ -1,0 +1,60 @@
+﻿@model UMS_Core.Models.CourseRegistration
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CourseRegistration</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentId" class="control-label"></label>
+                @*<input asp-for="StudentId" class="form-control" />*@
+                <select asp-for="StudentId" asp-items="@(new SelectList(ViewBag.Student, "Id", "FirstName"))" class="form-control">
+                    <option value="" selected disabled>Select Your Student</option>
+                </select>
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                @*<input asp-for="DepartmentId" class="form-control" />*@
+                <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.Department, "Id", "Name"))" class="form-control">
+                    <option value="" selected disabled>Select Your Department</option>
+                </select>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FacultyId" class="control-label"></label>
+                @*<input asp-for="FacultyId" class="form-control" />*@
+                <select asp-for="FacultyId" asp-items="@(new SelectList(ViewBag.Faculty, "Id", "Name"))" class="form-control">
+                    <option value="" selected disabled>Select Your Faculty</option>
+                </select>
+                <span asp-validation-for="FacultyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label"></label>
+                @*<input asp-for="CourseId" class="form-control" />*@
+                <select asp-for="CourseId" asp-items="@(new SelectList(ViewBag.Course, "Id", "Title"))" class="form-control">
+                    <option value="" selected disabled>Select Your Course</option>
+                </select>
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
